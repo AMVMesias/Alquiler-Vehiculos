@@ -1,12 +1,7 @@
 ﻿/* Please see documentation at https://learn.microsoft.com/aspnet/core/client-side/bundling-and-minification
 for details on configuring this project to bundle and minify static web assets. */
 
-a.navbar-brand {
-  white-space: normal;
-  text-align: center;
-  word-break: break-all;
-}
-
+/* Estilos base */
 a {
   color: #0077cc;
 }
@@ -23,9 +18,11 @@ a {
   border-color: #1861ac;
 }
 
+/* Estilos base del layout */
 .border-top {
   border-top: 1px solid #e5e5e5;
 }
+
 .border-bottom {
   border-bottom: 1px solid #e5e5e5;
 }
@@ -34,15 +31,255 @@ a {
   box-shadow: 0 .25rem .75rem rgba(0, 0, 0, .05);
 }
 
-button.accept-policy {
-  font-size: 1rem;
-  line-height: inherit;
-}
-
+/* Footer */
 .footer {
   position: absolute;
   bottom: 0;
   width: 100%;
   white-space: nowrap;
   line-height: 60px;
+}
+
+button.accept-policy {
+  font-size: 1rem;
+  line-height: inherit;
+}
+
+
+
+
+/*------------------------------------------*/
+html {
+  font-size: 14px;
+}
+
+@media (min-width: 768px) {
+  html {
+    font-size: 16px;
+  }
+}
+
+.btn:focus, .btn:active:focus, .btn-link.nav-link:focus, .form-control:focus, .form-check-input:focus {
+  box-shadow: 0 0 0 0.1rem white, 0 0 0 0.25rem #258cfb;
+}
+
+html {
+  position: relative;
+  min-height: 100%;
+}
+
+body {
+  margin-bottom: 60px;
+}
+
+/* Reset b�sico */
+html {
+    font-size: 14px;
+    position: relative;
+    min-height: 100%;
+}
+
+@media (min-width: 768px) {
+    html {
+        font-size: 16px;
+    }
+}
+
+body, html {
+    margin: 0;
+    padding: 0;
+    overflow-x: hidden;
+}
+
+.btn:focus, .btn:active:focus, .btn-link.nav-link:focus, .form-control:focus, .form-check-input:focus {
+    box-shadow: 0 0 0 0.1rem white, 0 0 0 0.25rem #258cfb;
+}
+
+body {
+    margin-bottom: 60px;
+}
+
+/* Estilo para el header completo */
+header {
+    background-color: var(--bs-dark);
+    width: 100%;
+    position: sticky;
+    top: 0;
+    z-index: 1030;
+}
+
+/* Ajustar el contenedor principal para permitir el ancho completo */
+.container-fluid {
+    border: 0;
+    width: 100%;
+    padding: 0;
+    margin: 0;
+    background-color: var(--bs-dark);
+}
+
+    .container-fluid .text-content {
+        color: var(--bs-light);
+    }
+
+/* Ajustar el espaciado del contenido principal */
+main {
+    padding: 0;
+    padding-top: 0;
+}
+
+/* Ajustar el navbar dentro del header */
+.custom-navbar {
+    background-color: var(--bs-dark);
+    padding: 10px 0;
+    margin-bottom: 0;
+}
+
+.navbar {
+    background-color: var(--bs-dark) !important;
+    padding: 15px;
+    margin: 0;
+}
+
+.navbar-brand {
+    font-family: 'Russo One', sans-serif;
+    margin-left: 2rem;
+    font-size: 1.8rem;
+    display: flex;
+    align-items: center;
+}
+
+.brand-car {
+    font-family: 'Racing Sans One', cursive;
+    color: var(--bs-warning);
+    margin-right: 2px;
+}
+
+.brand-express {
+    font-family: 'Russo One', sans-serif;
+    color: var(--bs-light);
+}
+
+.navbar-toggler {
+    margin-right: 2rem;
+    border-color: var(--bs-light) !important;
+}
+
+.navbar-toggler-icon {
+    background-image: url("data:image/svg+xml,%3csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 30 30'%3e%3cpath stroke='rgba%28255, 255, 255, 1%29' stroke-linecap='round' stroke-miterlimit='10' stroke-width='2' d='M4 7h22M4 15h22M4 23h22'/%3e%3c/svg%3e") !important;
+}
+
+/* Estilo para el hover del bot�n */
+.navbar-toggler:hover {
+    opacity: 0.8;
+}
+
+/* Estilo para cuando el bot�n est� activo */
+.navbar-toggler:focus {
+    box-shadow: 0 0 0 0.25rem rgba(255, 255, 255, 0.25);
+}
+
+.navbar-toggler {
+    margin-right: 2rem;
+}
+
+/* Estilos para el men� desplegable */
+.dropdown-menu-dark {
+    background-color: var(--bs-dark);
+    border: 1px solid var(--bs-warning);
+}
+
+.dropdown-item {
+    color: var(--bs-gray-400);
+}
+
+    .dropdown-item:hover {
+        background-color: var(--bs-gray-600);
+        color: white;
+    }
+
+/* Estilos para los enlaces del navbar */
+.nav-link {
+    color: var(--bs-light) !important;
+    transition: color 0.3s ease;
+}
+
+    .nav-link:hover,
+    .nav-link.active {
+        color: var(--bs-warning) !important;
+    }
+
+.dropdown-divider {
+    border-top: 1px solid var(--bs-warning);
+    opacity: 0.2;
+}
+
+.offcanvas-header {
+    border-bottom: 1px solid var(--bs-warning);
+}
+
+.offcanvas-title {
+    color: var(--bs-warning);
+    font-family: 'Russo One', sans-serif;
+}
+
+/* Ajustar el offcanvas para mantener consistencia */
+.offcanvas,
+.offcanvas-header,
+.offcanvas-body {
+    background-color: var(--bs-dark);
+}
+
+.offcanvas-header {
+    border-bottom: 1px solid var(--bs-warning);
+}
+
+.offcanvas-body {
+    background-color: var(--bs-dark);
+}
+
+.btn-close {
+    filter: invert(1) grayscale(100%) brightness(200%);
+    opacity: 0.8;
+}
+
+    .btn-close:hover {
+        opacity: 1;
+    }
+
+.container_ {
+    padding: 0;
+    margin: 0;
+    border: 0;
+    width: 1600px;
+}
+
+.container {
+    width: 100%;
+    padding-right: var(--bs-gutter-x, 0.75rem);
+    padding-left: var(--bs-gutter-x, 0.75rem);
+    margin-right: auto;
+    margin-left: auto;
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: center;
+}
+
+
+
+@media (max-width: 576px) {
+    .container {
+        padding: 0;
+        margin: 0;
+        border: 0;
+        width: 100%;
+        display: flex;
+        flex-wrap: wrap;
+    }
+  }
+
+  /* Media query para dispositivos m�viles */
+@media (max-width: 768px) {
+  .navbar-brand {
+      font-size: 1.4rem;
+  }
 }
