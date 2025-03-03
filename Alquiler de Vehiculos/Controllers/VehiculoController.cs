@@ -22,6 +22,11 @@ namespace Alquiler.Controllers
             return View();
         }
 
+        public IActionResult Reserva()
+        {
+            return View();
+        }
+
         // Métodos para devolver datos directamente
         public List<VehiculoCLS> ListarVehiculos()
         {
