@@ -212,3 +212,38 @@ h1 {
     color: inherit;
     margin-right: 0.5rem;
 }
+
+/* Estilos para la sección de solicitudes */
+#solicitudes .form-floating {
+    margin-bottom: 1rem;
+}
+
+#solicitudes .badge {
+    font-size: 0.85rem;
+    padding: 0.5em 0.8em;
+}
+
+#solicitudes .btn-sm {
+    padding: 0.25rem 0.5rem;
+    margin: 0 0.2rem;
+}
+
+#solicitudes .table td {
+    vertical-align: middle;
+}
+
+/* Estilos para el modal */
+.modal-header {
+    background: var(--dark-color);
+    color: white;
+}
+
+.modal-body h6 {
+    color: var(--primary-color);
+    margin-bottom: 1rem;
+}
+
+.modal-footer {
+    border-top: 1px solid #dee2e6;
+    padding: 1rem;
+}
