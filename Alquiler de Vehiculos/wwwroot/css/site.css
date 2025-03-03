@@ -319,3 +319,74 @@ a {
                 transform: translateY(-2px);
                 box-shadow: 0 4px 10px rgba(255, 193, 7, 0.3);
         }
+
+/* Estilos para el modo oscuro y usuario */
+.form-check-input {
+    cursor: pointer;
+    width: 3rem;
+    height: 1.5rem;
+    margin-left: 0;
+}
+
+.form-check-input:checked {
+    background-color: #ffd700;
+    border-color: #ffd700;
+}
+
+.form-check-label {
+    cursor: pointer;
+}
+
+.dropdown-menu-dark {
+    background-color: #343a40;
+    border: 1px solid rgba(255,255,255,.15);
+}
+
+.dropdown-item:hover {
+    background-color: #495057;
+}
+
+/* Estilo para el icono de usuario */
+.btn-link.nav-link {
+    color: #fff;
+    padding: 0.5rem;
+    transition: color 0.3s ease;
+}
+
+.btn-link.nav-link:hover {
+    color: #ffd700;
+}
+
+/* Modo oscuro */
+[data-theme="dark"] {
+    --bs-body-bg: #212529;
+    --bs-body-color: #f8f9fa;
+}
+
+:root {
+    /* Colores modo claro */
+    --background-primary: #ffffff;
+    --background-secondary: #f8f9fa;
+    --text-primary: #212529;
+    --text-secondary: #6c757d;
+    --border-color: #dee2e6;
+    --card-bg: #ffffff;
+    --navbar-bg: #343a40;
+    --navbar-text: #ffffff;
+    --input-bg: #ffffff;
+    --input-text: #212529;
+}
+
+[data-theme="dark"] {
+    /* Colores modo oscuro */
+    --background-primary: #212529;
+    --background-secondary: #343a40;
+    --text-primary: #f8f9fa;
+    --text-secondary: #adb5bd;
+    --border-color: #495057;
+    --card-bg: #343a40;
+    --navbar-bg: #212529;
+    --navbar-text: #f8f9fa;
+    --input-bg: #495057;
+    --input-text: #f8f9fa;
+}

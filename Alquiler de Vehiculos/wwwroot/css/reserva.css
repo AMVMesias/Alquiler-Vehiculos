@@ -7,6 +7,12 @@
     --text-dark: #333333;
 }
 
+/* Estilos generales */
+body {
+    background-color: var(--background-primary);
+    color: var(--text-primary);
+}
+
 /* Contenedor principal */
 .container {
     display: flex;
@@ -31,6 +37,8 @@ h1 {
     margin-bottom: 2rem;
     transition: all 0.3s ease;
     text-align: center;
+    background-color: var(--card-bg);
+    border-color: var(--border-color);
 }
 
 .card-header {
@@ -90,6 +98,7 @@ h1 {
 .table {
     margin: 0 auto;
     max-width: 90%;
+    color: var(--text-primary);
 }
 
 .table th {
@@ -99,6 +108,11 @@ h1 {
 .table td {
     text-align: center;
     vertical-align: middle;
+}
+
+.table thead th {
+    background-color: var(--background-secondary);
+    color: var(--text-primary);
 }
 
 /* Botones */
@@ -130,6 +144,12 @@ h1 {
     margin: 0 auto;
 }
 
+.form-control {
+    background-color: var(--input-bg);
+    color: var(--input-text);
+    border-color: var(--border-color);
+}
+
 /* Estilos para las pestañas */
 .nav-tabs .nav-link {
     color: var(--text-dark);          /* Color negro para mejor visibilidad */
@@ -137,6 +157,7 @@ h1 {
     padding: 1rem 1.5rem;
     transition: all 0.3s ease;
  /*   opacity: 0.8;                     /* Opacidad para distinguir del activo */
+    color: var(--text-primary);
 }
 
 .nav-tabs .nav-link:hover {
@@ -149,6 +170,9 @@ h1 {
     font-weight: 600;
     border-bottom: 3px solid var(--pichincha-color);
     opacity: 1;
+    background-color: var(--card-bg);
+    color: var(--text-primary);
+    border-color: var(--border-color);
 }
 
 /* Estilos para la tabla de reservas */
@@ -246,4 +270,17 @@ h1 {
 .modal-footer {
     border-top: 1px solid #dee2e6;
     padding: 1rem;
+}
+
+/* Ajustes para el modo oscuro */
+[data-theme="dark"] .modal-content {
+    background-color: var(--card-bg);
+}
+
+[data-theme="dark"] .modal-header {
+    border-bottom-color: var(--border-color);
+}
+
+[data-theme="dark"] .modal-footer {
+    border-top-color: var(--border-color);
 }
