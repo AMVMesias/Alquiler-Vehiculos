@@ -41,10 +41,16 @@
                             <i class="fas fa-user-circle fa-lg"></i>
                         </button>
                         <ul class="dropdown-menu dropdown-menu-end dropdown-menu-dark" aria-labelledby="userDropdown">
-                            <li><a class="dropdown-item" href="#"><i class="fas fa-sign-in-alt me-2"></i>Iniciar Sesión</a></li>
-                            <li><a class="dropdown-item" href="#"><i class="fas fa-user-plus me-2"></i>Crear Cuenta</a></li>
+                            <li><a class="dropdown-item" href="#" data-bs-toggle="modal" data-bs-target="#loginModal">
+                                <i class="fas fa-sign-in-alt me-2"></i>Iniciar Sesión</a>
+                            </li>
+                            <li><a class="dropdown-item" href="#" data-bs-toggle="modal" data-bs-target="#registerModal">
+                                <i class="fas fa-user-plus me-2"></i>Crear Cuenta</a>
+                            </li>
                             <li><hr class="dropdown-divider"></li>
-                            <li><a class="dropdown-item" href="#"><i class="fas fa-question-circle me-2"></i>Ayuda</a></li>
+                            <li><a class="dropdown-item text-danger" href="#">
+                                <i class="fas fa-sign-out-alt me-2"></i>Cerrar Sesión</a>
+                            </li>
                         </ul>
                     </div>
 
@@ -68,6 +74,9 @@
                             </li>
                             <li class="nav-item">
                                 <a class="nav-link " asp-controller="Vehiculo" asp-action="Vehiculos">Vehiculos</a>
+                            </li>
+                            <li class="nav-item">
+                                <a class="nav-link " asp-controller="Seguro" asp-action="Seguro">Nuestros Seguros</a>
                             </li>
                             <li class="nav-item dropdown">
                                 <a class="nav-link dropdown-toggle" href="#" role="button" data-bs-toggle="dropdown" aria-expanded="false">
@@ -97,6 +106,138 @@
             @RenderBody()
              @await RenderSectionAsync("Styles", required: false)
         </main>
+    </div>
+
+    <!-- Modal Iniciar Sesión -->
+    <div class="modal fade" id="loginModal">
+        <div class="modal-dialog modal-dialog-centered">
+            <div class="modal-content">
+                <div class="modal-header border-0">
+                    <h5 class="modal-title fw-bold">
+                        <i class="fas fa-sign-in-alt me-2 text-primary"></i>Iniciar Sesión
+                    </h5>
+                    <button type="button" class="btn-close" data-bs-dismiss="modal"></button>
+                </div>
+                <div class="modal-body px-4 py-5">
+                    <div class="text-center mb-4">
+                        <i class="fas fa-user-circle fa-3x text-primary mb-3"></i>
+                        <h4 class="fw-light">¡Bienvenido de nuevo!</h4>
+                    </div>
+                    <form id="loginForm">
+                        <div class="floating-input mb-4">
+                            <input type="email" class="form-control" id="loginEmail" required>
+                            <label for="loginEmail"><i class="fas fa-envelope me-2"></i>Correo Electrónico</label>
+                        </div>
+                        <div class="floating-input mb-4">
+                            <input type="password" class="form-control" id="loginPassword" required>
+                            <label for="loginPassword"><i class="fas fa-lock me-2"></i>Contraseña</label>
+                            <button type="button" class="password-toggle" onclick="togglePassword('loginPassword')">
+                                <i class="fas fa-eye"></i>
+                            </button>
+                        </div>
+                        <div class="d-flex justify-content-between mb-4">
+                            <div class="form-check">
+                                <input type="checkbox" class="form-check-input" id="rememberMe">
+                                <label class="form-check-label" for="rememberMe">Recordar sesión</label>
+                            </div>
+                            <a href="#" class="text-primary text-decoration-none">¿Olvidaste tu contraseña?</a>
+                        </div>
+                        <button type="submit" class="btn btn-primary w-100 mb-3 py-2">
+                            <i class="fas fa-sign-in-alt me-2"></i>Iniciar Sesión
+                        </button>
+                        <p class="text-center mb-0">
+                            ¿No tienes una cuenta? 
+                            <a href="#" data-bs-toggle="modal" data-bs-target="#registerModal" 
+                               data-bs-dismiss="modal" class="text-primary">Regístrate aquí</a>
+                        </p>
+                    </form>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- Modal Crear Cuenta -->
+    <div class="modal fade" id="registerModal">
+        <div class="modal-dialog modal-dialog-centered modal-lg">
+            <div class="modal-content">
+                <div class="modal-header border-0">
+                    <h5 class="modal-title fw-bold">
+                        <i class="fas fa-user-plus me-2 text-success"></i>Crear Cuenta
+                    </h5>
+                    <button type="button" class="btn-close" data-bs-dismiss="modal"></button>
+                </div>
+                <div class="modal-body p-4">
+                    <div class="text-center mb-4">
+                        <div class="registration-icon mb-3">
+                            <i class="fas fa-car fa-2x text-success"></i>
+                            <i class="fas fa-plus fa-sm text-success position-absolute"></i>
+                        </div>
+                        <h4 class="fw-light">Únete a CarExpress</h4>
+                        <p class="text-muted">Completa tus datos para comenzar</p>
+                    </div>
+                    <form id="registerForm" class="needs-validation" novalidate>
+                        <div class="row g-3">
+                            <div class="col-md-6">
+                                <div class="floating-input">
+                                    <input type="text" class="form-control" id="nombres" required>
+                                    <label for="nombres"><i class="fas fa-user me-2"></i>Nombres</label>
+                                </div>
+                            </div>
+                            <div class="col-md-6">
+                                <div class="floating-input">
+                                    <input type="text" class="form-control" id="apellidos" required>
+                                    <label for="apellidos"><i class="fas fa-user me-2"></i>Apellidos</label>
+                                </div>
+                            </div>
+                            <div class="col-md-6">
+                                <div class="floating-input">
+                                    <input type="email" class="form-control" id="email" required>
+                                    <label for="email"><i class="fas fa-envelope me-2"></i>Correo Electrónico</label>
+                                </div>
+                            </div>
+                            <div class="col-md-6">
+                                <div class="floating-input">
+                                    <input type="tel" class="form-control" id="telefono" required>
+                                    <label for="telefono"><i class="fas fa-phone me-2"></i>Teléfono</label>
+                                </div>
+                            </div>
+                            <div class="col-md-6">
+                                <div class="floating-input">
+                                    <input type="password" class="form-control" id="password" required>
+                                    <label for="password"><i class="fas fa-lock me-2"></i>Contraseña</label>
+                                    <button type="button" class="password-toggle" onclick="togglePassword('password')">
+                                        <i class="fas fa-eye"></i>
+                                    </button>
+                                </div>
+                            </div>
+                            <div class="col-md-6">
+                                <div class="floating-input">
+                                    <input type="password" class="form-control" id="confirmPassword" required>
+                                    <label for="confirmPassword"><i class="fas fa-lock me-2"></i>Confirmar Contraseña</label>
+                                    <button type="button" class="password-toggle" onclick="togglePassword('confirmPassword')">
+                                        <i class="fas fa-eye"></i>
+                                    </button>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="form-check mt-4">
+                            <input type="checkbox" class="form-check-input" id="terms" required>
+                            <label class="form-check-label" for="terms">
+                                Acepto los <a href="#" class="text-success">términos y condiciones</a>
+                            </label>
+                        </div>
+                        <button type="submit" class="btn btn-success w-100 mt-4 py-2">
+                            <i class="fas fa-user-plus me-2"></i>Crear Cuenta
+                        </button>
+                        <p class="text-center mt-3 mb-0">
+                            ¿Ya tienes una cuenta? 
+                            <a href="#" data-bs-toggle="modal" data-bs-target="#loginModal" 
+                               data-bs-dismiss="modal" class="text-success">Inicia sesión aquí</a>
+                        </p>
+                    </form>
+                </div>
+            </div>
+        </div>
     </div>
 
     <footer class="border-top footer text-muted">

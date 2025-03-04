@@ -1,0 +1,175 @@
+﻿@{
+    ViewData["Title"] = "Nuestros Seguros";
+}
+
+@section Styles {
+    <link rel="stylesheet" href="~/css/seguro.css" />
+}
+
+<div class="container py-5">
+    <!-- Encabezado -->
+    <div class="text-center mb-5">
+        <h1 class="display-4 fw-bold">
+            <i class="fas fa-shield-alt text-primary me-3"></i>
+            Nuestros Seguros
+        </h1>
+        <p class="lead text-muted">Protección completa para tu tranquilidad</p>
+    </div>
+
+    <!-- Tipos de Seguro -->
+    <div class="row g-4">
+        <!-- Responsabilidad Civil -->
+        <div class="col-md-6 col-lg-4">
+            <div class="card h-100 shadow-sm hover-card seguro-civil">
+                <div class="card-body">
+                    <div class="feature-icon bg-primary bg-gradient text-white rounded-3 mb-3">
+                        <i class="fas fa-car-crash fa-2x p-3"></i>
+                    </div>
+                    <h3 class="card-title h5">Responsabilidad Civil</h3>
+                    <p class="card-text">
+                        Cubre daños materiales y personales causados a terceros durante el uso del vehículo.
+                    </p>
+                    <ul class="list-unstyled mt-3">
+                        <li><i class="fas fa-check text-success me-2"></i>Daños a terceros</li>
+                        <li><i class="fas fa-check text-success me-2"></i>Responsabilidad legal</li>
+                        <li><i class="fas fa-check text-success me-2"></i>Gastos médicos terceros</li>
+                    </ul>
+                    <div class="price-tag mt-4">
+                        <span class="amount">$80</span>
+                        <span class="period">/día</span>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <!-- Todo Riesgo -->
+        <div class="col-md-6 col-lg-4">
+            <div class="card h-100 shadow-sm hover-card seguro-riesgo">
+                <div class="card-body">
+                    <div class="feature-icon bg-danger bg-gradient text-white rounded-3 mb-3">
+                        <i class="fas fa-car-burst fa-2x p-3"></i>
+                    </div>
+                    <h3 class="card-title h5">Cobertura Todo Riesgo</h3>
+                    <p class="card-text">
+                        La protección más completa para el vehículo, cubre cualquier tipo de daño.
+                    </p>
+                    <ul class="list-unstyled mt-3">
+                        <li><i class="fas fa-check text-success me-2"></i>Daños propios</li>
+                        <li><i class="fas fa-check text-success me-2"></i>Robo total o parcial</li>
+                        <li><i class="fas fa-check text-success me-2"></i>Eventos naturales</li>
+                        <li><i class="fas fa-check text-success me-2"></i>Vandalismo</li>
+                    </ul>
+                    <div class="price-tag mt-4">
+                        <span class="amount">$100</span>
+                        <span class="period">/día</span>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <!-- Protección contra Robo -->
+        <div class="col-md-6 col-lg-4">
+            <div class="card h-100 shadow-sm hover-card seguro-robo">
+                <div class="card-body">
+                    <div class="feature-icon bg-success bg-gradient text-white rounded-3 mb-3">
+                        <i class="fas fa-shield-halved fa-2x p-3"></i>
+                    </div>
+                    <h3 class="card-title h5">Protección contra Robo</h3>
+                    <p class="card-text">
+                        Seguridad específica contra robo y daños relacionados.
+                    </p>
+                    <ul class="list-unstyled mt-3">
+                        <li><i class="fas fa-check text-success me-2"></i>Robo total</li>
+                        <li><i class="fas fa-check text-success me-2"></i>Daños por robo</li>
+                        <li><i class="fas fa-check text-success me-2"></i>Sistema de rastreo</li>
+                    </ul>
+                    <div class="price-tag mt-4">
+                        <span class="amount">$85</span>
+                        <span class="period">/día</span>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <!-- Asistencia en Carretera -->
+        <div class="col-md-6 col-lg-4">
+            <div class="card h-100 shadow-sm hover-card seguro-carretera">
+                <div class="card-body">
+                    <div class="feature-icon bg-warning bg-gradient text-white rounded-3 mb-3">
+                        <i class="fas fa-road fa-2x p-3"></i>
+                    </div>
+                    <h3 class="card-title h5">Asistencia en Carretera</h3>
+                    <p class="card-text">
+                        Ayuda inmediata en cualquier emergencia durante tu viaje.
+                    </p>
+                    <ul class="list-unstyled mt-3">
+                        <li><i class="fas fa-check text-success me-2"></i>Servicio 24/7</li>
+                        <li><i class="fas fa-check text-success me-2"></i>Grúa incluida</li>
+                        <li><i class="fas fa-check text-success me-2"></i>Cambio de llanta</li>
+                        <li><i class="fas fa-check text-success me-2"></i>Batería descargada</li>
+                    </ul>
+                    <div class="price-tag mt-4">
+                        <span class="amount">$90</span>
+                        <span class="period">/día</span>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <!-- Accidentes Personales -->
+        <div class="col-md-6 col-lg-4">
+            <div class="card h-100 shadow-sm hover-card seguro-personal">
+                <div class="card-body">
+                    <div class="feature-icon bg-info bg-gradient text-white rounded-3 mb-3">
+                        <i class="fas fa-user-shield fa-2x p-3"></i>
+                    </div>
+                    <h3 class="card-title h5">Accidentes Personales</h3>
+                    <p class="card-text">
+                        Protección integral para conductor y pasajeros.
+                    </p>
+                    <ul class="list-unstyled mt-3">
+                        <li><i class="fas fa-check text-success me-2"></i>Gastos médicos</li>
+                        <li><i class="fas fa-check text-success me-2"></i>Invalidez</li>
+                        <li><i class="fas fa-check text-success me-2"></i>Vida</li>
+                    </ul>
+                    <div class="price-tag mt-4">
+                        <span class="amount">$95</span>
+                        <span class="period">/día</span>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- Sección de FAQ -->
+    <div class="mt-5 pt-5">
+        <h2 class="text-center mb-4">Preguntas Frecuentes</h2>
+        <div class="accordion" id="accordionFAQ">
+            <div class="accordion-item">
+                <h2 class="accordion-header">
+                    <button class="accordion-button" type="button" data-bs-toggle="collapse" data-bs-target="#faq1">
+                        ¿Qué seguro es obligatorio?
+                    </button>
+                </h2>
+                <div id="faq1" class="accordion-collapse collapse show" data-bs-parent="#accordionFAQ">
+                    <div class="accordion-body">
+                        El seguro de Responsabilidad Civil es obligatorio para todos los alquileres.
+                    </div>
+                </div>
+            </div>
+            <div class="accordion-item">
+                <h2 class="accordion-header">
+                    <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#faq2">
+                        ¿Puedo cambiar mi seguro durante el alquiler?
+                    </button>
+                </h2>
+                <div id="faq2" class="accordion-collapse collapse" data-bs-parent="#accordionFAQ">
+                    <div class="accordion-body">
+                        No es posible modificar el seguro una vez iniciado el período de alquiler.
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+

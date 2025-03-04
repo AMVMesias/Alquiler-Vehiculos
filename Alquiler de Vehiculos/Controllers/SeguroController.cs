@@ -11,7 +11,7 @@ namespace Alquiler.Controllers
         private readonly SeguroBL seguroBL = new SeguroBL();
         private readonly ReservaBL reservaBL = new ReservaBL();
 
-        public IActionResult Index()
+        public IActionResult Seguro()
         {
             return View();
         }

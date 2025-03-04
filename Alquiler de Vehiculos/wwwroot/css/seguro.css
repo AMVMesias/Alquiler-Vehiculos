@@ -1,0 +1,166 @@
+/* Variables de colores */
+:root {
+    --civil-color: #4361ee;
+    --riesgo-color: #ef233c;
+    --robo-color: #2a9d8f;
+    --carretera-color: #ff9f1c;
+    --personal-color: #00b4d8;
+}
+
+/* Estilos para la página de seguros */
+.feature-icon {
+    width: 4.5rem;
+    height: 4.5rem;
+    border-radius: 1rem;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    margin-bottom: 1.5rem;
+    position: relative;
+    overflow: hidden;
+}
+
+.feature-icon::before {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background: linear-gradient(45deg, rgba(255,255,255,0.15), rgba(255,255,255,0));
+    z-index: 1;
+}
+
+/* Estilos para las tarjetas */
+.hover-card {
+    transition: all 0.3s ease-in-out;
+    border: none;
+    overflow: hidden;
+}
+
+/* Estilos específicos para cada tipo de seguro */
+.hover-card.seguro-civil {
+    background: linear-gradient(145deg, #4361ee10, #4361ee20);
+    border-top: 4px solid var(--civil-color);
+}
+
+.hover-card.seguro-riesgo {
+    background: linear-gradient(145deg, #ef233c10, #ef233c20);
+    border-top: 4px solid var(--riesgo-color);
+}
+
+.hover-card.seguro-robo {
+    background: linear-gradient(145deg, #2a9d8f10, #2a9d8f20);
+    border-top: 4px solid var(--robo-color);
+}
+
+.hover-card.seguro-carretera {
+    background: linear-gradient(145deg, #ff9f1c10, #ff9f1c20);
+    border-top: 4px solid var(--carretera-color);
+}
+
+.hover-card.seguro-personal {
+    background: linear-gradient(145deg, #00b4d810, #00b4d820);
+    border-top: 4px solid var(--personal-color);
+}
+
+/* Efectos hover mejorados */
+.hover-card:hover {
+    transform: translateY(-10px);
+    box-shadow: 0 15px 30px rgba(0, 0, 0, 0.1) !important;
+}
+
+.hover-card.seguro-civil:hover {
+    box-shadow: 0 15px 30px rgba(67, 97, 238, 0.2) !important;
+}
+
+.hover-card.seguro-riesgo:hover {
+    box-shadow: 0 15px 30px rgba(239, 35, 60, 0.2) !important;
+}
+
+.hover-card.seguro-robo:hover {
+    box-shadow: 0 15px 30px rgba(42, 157, 143, 0.2) !important;
+}
+
+.hover-card.seguro-carretera:hover {
+    box-shadow: 0 15px 30px rgba(255, 159, 28, 0.2) !important;
+}
+
+.hover-card.seguro-personal:hover {
+    box-shadow: 0 15px 30px rgba(0, 180, 216, 0.2) !important;
+}
+
+.price-tag {
+    text-align: center;
+    border-top: 1px solid #dee2e6;
+    padding-top: 1rem;
+}
+
+.price-tag .amount {
+    font-size: 1.5rem;
+    font-weight: bold;
+    color: var(--bs-primary);
+}
+
+.price-tag .period {
+    color: var(--bs-secondary);
+    font-size: 0.9rem;
+}
+
+/* Modo oscuro */
+[data-theme="dark"] {
+    .card {
+        background-color: var(--card-bg);
+        color: var(--text-light);
+    }
+
+    .accordion-button {
+        background-color: var(--card-bg);
+        color: var(--text-light);
+    }
+
+    .accordion-button:not(.collapsed) {
+        background-color: var(--background-secondary);
+    }
+
+    .accordion-body {
+        background-color: var(--card-bg);
+        color: var(--text-light);
+    }
+
+    .text-muted {
+        color: #adb5bd !important;
+    }
+
+    .hover-card {
+        background: linear-gradient(145deg, rgba(255,255,255,0.05), rgba(255,255,255,0.02));
+    }
+
+    .hover-card.seguro-civil {
+        background: linear-gradient(145deg, #4361ee15, #4361ee08);
+    }
+
+    .hover-card.seguro-riesgo {
+        background: linear-gradient(145deg, #ef233c15, #ef233c08);
+    }
+
+    .hover-card.seguro-robo {
+        background: linear-gradient(145deg, #2a9d8f15, #2a9d8f08);
+    }
+
+    .hover-card.seguro-carretera {
+        background: linear-gradient(145deg, #ff9f1c15, #ff9f1c08);
+    }
+
+    .hover-card.seguro-personal {
+        background: linear-gradient(145deg, #00b4d815, #00b4d808);
+    }
+
+    .price-tag .amount {
+        color: #fff;
+    }
+
+    .price-tag {
+        border-top-color: rgba(255,255,255,0.1);
+    }
+}

@@ -12,7 +12,7 @@ namespace Alquiler.Controllers
         private readonly ClienteBL clienteBL = new ClienteBL();
         private readonly VehiculoBL vehiculoBL = new VehiculoBL();
 
-        public IActionResult Index()
+        public IActionResult Reserva()
         {
             return View();
         }

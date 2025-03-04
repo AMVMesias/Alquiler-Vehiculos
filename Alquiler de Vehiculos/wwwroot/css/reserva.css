@@ -1,19 +1,46 @@
-/* Variables para colores de bancos */
+/*=============================================
+  1. Variables Globales
+=============================================*/
 :root {
-    --pichincha-color: #ffd700;     /* Amarillo */
-    --guayaquil-color: #003366;     /* Azul marino */
-    --produbanco-color: #198754;    /* Verde */
+    /* Colores de bancos */
+    --pichincha-color: #ffd700;
+    --guayaquil-color: #003366;
+    --produbanco-color: #198754;
+    
+    /* Colores base - Modo Claro */
     --text-light: #ffffff;
     --text-dark: #333333;
+    --background-primary: #ffffff;
+    --background-secondary: #f8f9fa;
+    --border-color: #dee2e6;
+    --card-bg: #ffffff;
+    --navbar-bg: #343a40;
+    --input-bg: #ffffff;
+    --input-text: #212529;
 }
 
-/* Estilos generales */
+/*=============================================
+  2. Modo Oscuro - Variables
+=============================================*/
+[data-theme="dark"] {
+    --background-primary: #121212;
+    --background-secondary: #1e1e1e;
+    --text-primary: #f8f9fa;
+    --border-color: #495057;
+    --card-bg: #1e1e1e;
+    --navbar-bg: #121212;
+    --input-bg: #2d2d2d;
+    --input-text: #f8f9fa;
+}
+
+/*=============================================
+  3. Estilos Base
+=============================================*/
 body {
     background-color: var(--background-primary);
     color: var(--text-primary);
 }
 
-/* Contenedor principal */
 .container {
     display: flex;
     flex-direction: column;
@@ -24,14 +51,16 @@ body {
     margin: 0 auto;
 }
 
-/* Título principal */
 h1 {
     text-align: center;
     margin-bottom: 2rem;
     color: var(--bs-primary);
 }
 
-/* Estilos de las cards */
+/*=============================================
+  4. Componentes
+=============================================*/
+/* 4.1 Cards */
 .card {
     width: 100%;
     margin-bottom: 2rem;
@@ -53,90 +82,45 @@ h1 {
     align-items: center;
 }
 
-/* Banco Pichincha */
-.card.border-primary {
-    border-color: var(--pichincha-color) !important;
+/* 4.2 Pestañas de Navegación */
+.nav-tabs .nav-link {
+    color: #333333 !important;
+    font-weight: 500;
+    padding: 1rem 1.5rem;
+    transition: all 0.3s ease;
 }
 
-.card.border-primary .card-header {
-    background-color: var(--pichincha-color) !important;
-    color: var(--text-dark) !important;
+.nav-tabs .nav-link:hover {
+    color: #000000 !important;
+    background-color: rgba(0,0,0,0.05);
 }
 
-/* Banco Guayaquil */
-.card.border-success {
-    border-color: var(--guayaquil-color) !important;
+.nav-tabs .nav-link.active {
+    color: #ffffff !important;
+    background-color: #ffa500 !important;
+    border-color: #ffa500;
+    font-weight: 600;
 }
 
-.card.border-success .card-header {
-    background-color: var(--guayaquil-color) !important;
-    color: var(--text-light) !important;
+.nav-tabs .nav-link i {
+    color: inherit;
+    margin-right: 0.5rem;
 }
 
-/* Produbanco */
-.card.border-info {
-    border-color: var(--produbanco-color) !important;
-}
-
-.card.border-info .card-header {
-    background-color: var(--produbanco-color) !important;
-    color: var(--text-light) !important;
-}
-
-/* Estilos adicionales para mejorar la legibilidad */
-.card-text {
-    color: var(--text-dark);
-}
-
-.card-text strong {
-    color: var(--text-dark);
-    display: inline-block;
-    margin-bottom: 0.5rem;
-}
-
-/* Tabla */
+/* 4.3 Tablas */
 .table {
     margin: 0 auto;
     max-width: 90%;
     color: var(--text-primary);
 }
 
-.table th {
-    text-align: center;
-}
-
+.table th,
 .table td {
     text-align: center;
     vertical-align: middle;
 }
 
-.table thead th {
-    background-color: var(--background-secondary);
-    color: var(--text-primary);
-}
-
-/* Botones */
-.btn-success {
-    transition: all 0.3s ease;
-    margin: 0 auto;
-    display: block;
-}
-
-.btn-success:hover {
-    transform: translateY(-2px);
-    box-shadow: 0 4px 8px rgba(0,0,0,0.2);
-}
-
-/* Contenido de pagos */
-.payment-content {
-    transition: all 0.3s ease;
-    width: 100%;
-    display: flex;
-    flex-direction: column;
-    align-items: center;
-}
-
-/* Formularios */
+/* 4.4 Formularios */
 .form-group {
     text-align: center;
     width: 100%;
@@ -150,50 +134,159 @@ h1 {
     border-color: var(--border-color);
 }
 
-/* Estilos para las pestañas */
-.nav-tabs .nav-link {
-    color: var(--text-dark);          /* Color negro para mejor visibilidad */
-    font-weight: 500;
-    padding: 1rem 1.5rem;
+/* 4.5 Tarjetas de Seguro */
+.insurance-card {
     transition: all 0.3s ease;
- /*   opacity: 0.8;                     /* Opacidad para distinguir del activo */
-    color: var(--text-primary);
+    cursor: pointer;
+    border: 2px solid transparent;
 }
 
-.nav-tabs .nav-link:hover {
-    color: var(--pichincha-color);    /* Color amarillo al hover */
-    opacity: 1;
+.insurance-card:hover {
+    transform: translateY(-5px);
+    box-shadow: 0 0.5rem 1rem rgba(0,0,0,0.15);
 }
 
-.nav-tabs .nav-link.active {
-    color: var(--pichincha-color);    /* Color amarillo para pestaña activa */
-    font-weight: 600;
-    border-bottom: 3px solid var(--pichincha-color);
-    opacity: 1;
-    background-color: var(--card-bg);
-    color: var(--text-primary);
-    border-color: var(--border-color);
+.insurance-card .form-check {
+    padding: 0;
 }
 
-/* Estilos para la tabla de reservas */
-.table-responsive {
+.insurance-card .form-check-input {
+    position: absolute;
+    top: 1rem;
+    right: 1rem;
+    margin: 0;
+}
+
+.insurance-card .form-check-label {
+    padding: 1rem;
+    cursor: pointer;
+}
+
+.price-tag {
     margin-top: 1rem;
+    text-align: center;
 }
 
-.table th {
-    white-space: nowrap;
+.price-tag .amount {
+    font-size: 1.5rem;
+    font-weight: bold;
+    color: var(--bs-primary);
 }
 
-.badge {
-    padding: 0.5em 1em;
+.price-tag .period {
+    color: var(--bs-secondary);
+    font-size: 0.9rem;
 }
 
-.btn-sm {
-    padding: 0.25rem 0.5rem;
-    margin: 0 0.2rem;
+/* Estilo para tarjeta seleccionada */
+.insurance-card:has(.form-check-input:checked) {
+    border-color: var(--bs-primary);
+    background-color: rgba(var(--bs-primary-rgb), 0.05);
 }
 
-/* Media Queries para responsividad */
+/*=============================================
+  5. Estilos Específicos
+=============================================*/
+/* 5.1 Bancos */
+.card.border-primary {
+    border-color: var(--pichincha-color) !important;
+}
+
+.card.border-primary .card-header {
+    background-color: var(--pichincha-color) !important;
+    color: var(--text-dark) !important;
+}
+
+.card.border-success {
+    border-color: var(--guayaquil-color) !important;
+}
+
+.card.border-success .card-header {
+    background-color: var(--guayaquil-color) !important;
+    color: var(--text-light) !important;
+}
+
+.card.border-info {
+    border-color: var(--produbanco-color) !important;
+}
+
+.card.border-info .card-header {
+    background-color: var(--produbanco-color) !important;
+    color: var(--text-light) !important;
+}
+
+/* 5.2 Modal */
+.modal-header {
+    background: var(--dark-color);
+    color: white;
+}
+
+.modal-body h6 {
+    color: var(--primary-color);
+    margin-bottom: 1rem;
+}
+
+.modal-footer {
+    border-top: 1px solid var(--border-color);
+    padding: 1rem;
+}
+
+/*=============================================
+  6. Modo Oscuro - Sobreescrituras
+=============================================*/
+[data-theme="dark"] {
+    /* Textos */
+    .card-text,
+    .card-text strong,
+    .modal-body h6,
+    .modal-body p,
+    .modal-body strong {
+        color: var(--text-light) !important;
+    }
+
+    /* Modal */
+    .modal-content,
+    .modal-body,
+    .modal-footer {
+        background-color: var(--background-secondary);
+    }
+
+    .modal-header {
+        background-color: var(--navbar-bg);
+    }
+
+    .btn-close {
+        filter: invert(1) grayscale(100%) brightness(200%);
+    }
+
+    /* Cards de banco */
+    .card.border-primary,
+    .card.border-success,
+    .card.border-info {
+        background-color: var(--card-bg);
+    }
+
+    /* Tarjetas de Seguro */
+    .insurance-card {
+        background-color: var(--card-bg);
+    }
+
+    .insurance-card:has(.form-check-input:checked) {
+        background-color: rgba(255, 255, 255, 0.05);
+    }
+
+    .price-tag .amount {
+        color: var(--bs-primary);
+    }
+
+    .price-tag .period {
+        color: var(--text-secondary);
+    }
+}
+
+/*=============================================
+  7. Media Queries
+=============================================*/
 @media (max-width: 768px) {
     .container {
         padding: 1rem;
@@ -206,81 +299,4 @@ h1 {
     .table {
         max-width: 100%;
     }
-}
-
-/* Estilos para las pestañas */
-.card .nav-tabs .nav-link {
-    color: #333333 !important;          /* Color negro forzado */
-    font-weight: 500;
-    padding: 1rem 1.5rem;
-    transition: all 0.3s ease;
-    background-color: #f8f9fa;          /* Fondo claro */
-    border: 1px solid #dee2e6;
-}
-
-.card .nav-tabs .nav-link:hover {
-    color: #000000 !important;          /* Negro más intenso al hover */
-    background-color: #e9ecef;
-    border-color: #dee2e6;
-}
-
-.card .nav-tabs .nav-link.active {
-    color: #ffffff !important;          /* Texto blanco para activo */
-    background-color: #ffa500 !important; /* Naranja para activo */
-    border-color: #ffa500;
-    font-weight: 600;
-}
-
-/* Mejorar visibilidad de los iconos */
-.card .nav-tabs .nav-link i {
-    color: inherit;
-    margin-right: 0.5rem;
-}
-
-/* Estilos para la sección de solicitudes */
-#solicitudes .form-floating {
-    margin-bottom: 1rem;
-}
-
-#solicitudes .badge {
-    font-size: 0.85rem;
-    padding: 0.5em 0.8em;
-}
-
-#solicitudes .btn-sm {
-    padding: 0.25rem 0.5rem;
-    margin: 0 0.2rem;
-}
-
-#solicitudes .table td {
-    vertical-align: middle;
-}
-
-/* Estilos para el modal */
-.modal-header {
-    background: var(--dark-color);
-    color: white;
-}
-
-.modal-body h6 {
-    color: var(--primary-color);
-    margin-bottom: 1rem;
-}
-
-.modal-footer {
-    border-top: 1px solid #dee2e6;
-    padding: 1rem;
-}
-
-/* Ajustes para el modo oscuro */
-[data-theme="dark"] .modal-content {
-    background-color: var(--card-bg);
-}
-
-[data-theme="dark"] .modal-header {
-    border-bottom-color: var(--border-color);
-}
-
-[data-theme="dark"] .modal-footer {
-    border-top-color: var(--border-color);
 }
