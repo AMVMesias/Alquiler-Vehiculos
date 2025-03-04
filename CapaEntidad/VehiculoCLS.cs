@@ -11,5 +11,7 @@ namespace CapaEntidad
         public decimal Precio { get; set; }
         public string Estado { get; set; }
         public bool Habilitado { get; set; }
+        public string Path { get; set; }
+        public string Descripcion { get; set; }
     }
 }

@@ -10,9 +10,8 @@ namespace CapaDatos
     {
         public List<VehiculoCLS> ListarVehiculos()
         {
-            // Solo listar vehículos habilitados
             return EjecutarListado<VehiculoCLS>(
-                "SELECT Id, Marca, Modelo, Año, Precio, Estado, Habilitado FROM Vehiculos WHERE Habilitado = 1",
+                "sp_ListarVehiculos",
                 reader => new VehiculoCLS
                 {
                     Id = Convert.ToInt32(reader["Id"]),
@@ -21,35 +20,39 @@ namespace CapaDatos
                     Año = Convert.ToInt32(reader["Año"]),
                     Precio = Convert.ToDecimal(reader["Precio"]),
                     Estado = reader["Estado"].ToString(),
-                    Habilitado = Convert.ToBoolean(reader["Habilitado"])
+                    Habilitado = Convert.ToBoolean(reader["Habilitado"]),
+                    Path = reader["Path"] == DBNull.Value ? null : reader["Path"].ToString(),
+                    Descripcion = reader["Descripcion"] == DBNull.Value ? null : reader["Descripcion"].ToString()
                 },
-                CommandType.Text
+                CommandType.StoredProcedure  // Cambiado a tipo procedimiento almacenado
             );
         }
 
         public List<VehiculoCLS> FiltrarVehiculos(string marca, string modelo)
         {
-            string consulta = @"
-                SELECT Id, Marca, Modelo, Año, Precio, Estado, Habilitado 
-                FROM Vehiculos 
-                WHERE Habilitado = 1 ";
-
             List<SqlParameter> parametros = new List<SqlParameter>();
 
+            // Solo agregar parámetros si tienen valor
             if (!string.IsNullOrEmpty(marca))
             {
-                consulta += " AND Marca LIKE @Marca ";
-                parametros.Add(new SqlParameter("@Marca", "%" + marca + "%"));
+                parametros.Add(new SqlParameter("@Marca", marca));
+            }
+            else
+            {
+                parametros.Add(new SqlParameter("@Marca", DBNull.Value));
             }
 
             if (!string.IsNullOrEmpty(modelo))
             {
-                consulta += " AND Modelo LIKE @Modelo ";
-                parametros.Add(new SqlParameter("@Modelo", "%" + modelo + "%"));
+                parametros.Add(new SqlParameter("@Modelo", modelo));
+            }
+            else
+            {
+                parametros.Add(new SqlParameter("@Modelo", DBNull.Value));
             }
 
             return EjecutarListado<VehiculoCLS>(
-                consulta,
+                "sp_FiltrarVehiculos",
                 reader => new VehiculoCLS
                 {
                     Id = Convert.ToInt32(reader["Id"]),
@@ -58,10 +61,12 @@ namespace CapaDatos
                     Año = Convert.ToInt32(reader["Año"]),
                     Precio = Convert.ToDecimal(reader["Precio"]),
                     Estado = reader["Estado"].ToString(),
-                    Habilitado = Convert.ToBoolean(reader["Habilitado"])
+                    Habilitado = Convert.ToBoolean(reader["Habilitado"]),
+                    Path = reader["Path"] == DBNull.Value ? null : reader["Path"].ToString(),
+                    Descripcion = reader["Descripcion"] == DBNull.Value ? null : reader["Descripcion"].ToString()
                 },
-                CommandType.Text,
-                parametros.Count > 0 ? parametros.ToArray() : null
+                CommandType.StoredProcedure,
+                parametros.ToArray()
             );
         }
 
@@ -73,45 +78,66 @@ namespace CapaDatos
                 new SqlParameter("@Modelo", objVehiculo.Modelo),
                 new SqlParameter("@Año", objVehiculo.Año),
                 new SqlParameter("@Precio", objVehiculo.Precio),
-                new SqlParameter("@Estado", objVehiculo.Estado)
+                new SqlParameter("@Estado", objVehiculo.Estado),
+                new SqlParameter("@Path", objVehiculo.Path ?? (object)DBNull.Value),
+                new SqlParameter("@Descripcion", objVehiculo.Descripcion ?? (object)DBNull.Value)
             };
 
-            string consulta;
+            string procedimiento;
 
             if (objVehiculo.Id == 0)
             {
-                // Insertar nuevo vehículo (siempre habilitado por defecto)
-                consulta = @"
-                    INSERT INTO Vehiculos (Marca, Modelo, Año, Precio, Estado, Habilitado)
-                    VALUES (@Marca, @Modelo, @Año, @Precio, @Estado, 1)";
+                // Insertar nuevo vehículo usando el procedimiento almacenado
+                procedimiento = "sp_InsertarVehiculo";
             }
             else
             {
-                // Actualizar vehículo existente
-                consulta = @"
-                    UPDATE Vehiculos
-                    SET Marca = @Marca,
-                        Modelo = @Modelo,
-                        Año = @Año,
-                        Precio = @Precio,
-                        Estado = @Estado
-                    WHERE Id = @Id AND Habilitado = 1";
+                // Actualizar vehículo existente usando el procedimiento almacenado
+                procedimiento = "sp_ActualizarVehiculo";
                 parametros.Add(new SqlParameter("@Id", objVehiculo.Id));
             }
 
-            return EjecutarComandoSQL(consulta, CommandType.Text, parametros.ToArray());
+            return EjecutarComandoSQL(procedimiento, CommandType.StoredProcedure, parametros.ToArray());
         }
 
         public int EliminarVehiculo(int id)
         {
-            // Eliminación lógica (cambiar Habilitado a 0)
-            string consulta = "UPDATE Vehiculos SET Habilitado = 0 WHERE Id = @Id";
             SqlParameter[] parametros = new SqlParameter[]
             {
                 new SqlParameter("@Id", id)
             };
 
-            return EjecutarComandoSQL(consulta, CommandType.Text, parametros);
+            return EjecutarComandoSQL("sp_EliminarVehiculo", CommandType.StoredProcedure, parametros);
+        }
+
+        public VehiculoCLS ObtenerVehiculoPorId(int id)
+        {
+            SqlParameter[] parametros = new SqlParameter[]
+            {
+                new SqlParameter("@Id", id)
+            };
+
+            List<VehiculoCLS> vehiculos = EjecutarListado<VehiculoCLS>(
+                "SELECT Id, Marca, Modelo, Año, Precio, Estado, Habilitado, Path, Descripcion " +
+                "FROM Vehiculos WHERE Id = @Id AND Habilitado = 1",
+                reader => new VehiculoCLS
+                {
+                    Id = Convert.ToInt32(reader["Id"]),
+                    Marca = reader["Marca"].ToString(),
+                    Modelo = reader["Modelo"].ToString(),
+                    Año = Convert.ToInt32(reader["Año"]),
+                    Precio = Convert.ToDecimal(reader["Precio"]),
+                    Estado = reader["Estado"].ToString(),
+                    Habilitado = Convert.ToBoolean(reader["Habilitado"]),
+                    Path = reader["Path"] == DBNull.Value ? null : reader["Path"].ToString(),
+                    Descripcion = reader["Descripcion"] == DBNull.Value ? null : reader["Descripcion"].ToString()
+                },
+                CommandType.Text,
+                parametros
+            );
+
+            // Devuelve el primer vehículo o null si no se encontró
+            return vehiculos != null && vehiculos.Count > 0 ? vehiculos[0] : null;
         }
     }
 }

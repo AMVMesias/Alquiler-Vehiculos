@@ -14,31 +14,5 @@ namespace CapaDatos
             return root.GetConnectionString("cn");
         }
 
-        public static SqlDataReader ExecuteReader(string commandText, CommandType commandType)
-        {
-            SqlConnection cn = new SqlConnection(GetConnectionString());
-            SqlDataReader reader = null;
-
-            try
-            {
-                cn.Open();
-                using (SqlCommand cmd = new SqlCommand(commandText, cn))
-                {
-                    cmd.CommandType = commandType;
-                    reader = cmd.ExecuteReader(CommandBehavior.CloseConnection);
-                }
-            }
-            catch (Exception)
-            {
-                if (cn.State == ConnectionState.Open)
-                {
-                    cn.Close();
-                }
-                cn.Dispose();
-                throw;
-            }
-
-            return reader;
-        }
     }
 }
