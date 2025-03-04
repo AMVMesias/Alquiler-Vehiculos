@@ -1,0 +1,134 @@
+/* Variables para modo claro/oscuro */
+:root {
+    --card-hover-shadow: 0 8px 16px rgba(0,0,0,0.1);
+    --badge-success-bg: #28a745;
+    --badge-warning-bg: #ffc107;
+    --badge-danger-bg: #dc3545;
+}
+
+[data-theme="dark"] {
+    --card-hover-shadow: 0 8px 16px rgba(0,0,0,0.3);
+    --badge-success-bg: #198754;
+    --badge-warning-bg: #cc9a06;
+    --badge-danger-bg: #b02a37;
+}
+
+/* Estilos para la página de pagos */
+.card {
+    transition: all 0.3s ease;
+    border: 1px solid var(--border-color);
+}
+
+.card:hover {
+    transform: translateY(-5px);
+    box-shadow: var(--card-hover-shadow);
+}
+
+/* Estilos de tabla */
+.table {
+    border-color: var(--border-color);
+}
+
+.table th {
+    background-color: var(--background-secondary);
+    border-color: var(--border-color);
+}
+
+/* Modo oscuro */
+[data-theme="dark"] {
+    /* Tarjetas */
+    .card {
+        background-color: var(--card-bg);
+        color: var(--text-light);
+    }
+
+    .card-header {
+        background-color: var(--navbar-bg);
+        border-bottom: 1px solid var(--border-color);
+    }
+
+    /* Tablas */
+    .table {
+        color: var(--text-light);
+    }
+
+    .table th {
+        background-color: var(--navbar-bg);
+        color: var(--text-light);
+    }
+
+    .table td {
+        color: var(--text-light);
+        border-color: var(--border-color);
+    }
+
+    /* Modal */
+    .modal-content {
+        background-color: var(--background-secondary);
+        color: var(--text-light);
+    }
+
+    .modal-header {
+        border-bottom: 1px solid var(--border-color);
+    }
+
+    .modal-footer {
+        border-top: 1px solid var(--border-color);
+    }
+
+    /* Badges */
+    .badge.bg-success {
+        background-color: var(--badge-success-bg) !important;
+    }
+
+    .badge.bg-warning {
+        background-color: var(--badge-warning-bg) !important;
+    }
+
+    .badge.bg-danger {
+        background-color: var(--badge-danger-bg) !important;
+    }
+
+    /* Botones */
+    .btn-primary {
+        background-color: var(--bs-primary);
+        border-color: var(--bs-primary);
+    }
+
+    .btn-success {
+        background-color: var(--badge-success-bg);
+        border-color: var(--badge-success-bg);
+    }
+
+    /* Inputs y formularios */
+    .form-control {
+        background-color: var(--input-bg);
+        border-color: var(--border-color);
+        color: var(--text-light);
+    }
+
+    .form-control:focus {
+        background-color: var(--input-bg);
+        border-color: var(--bs-primary);
+        color: var(--text-light);
+    }
+
+    /* Scrollbar personalizada */
+    ::-webkit-scrollbar {
+        width: 8px;
+        height: 8px;
+    }
+
+    ::-webkit-scrollbar-track {
+        background: var(--background-secondary);
+    }
+
+    ::-webkit-scrollbar-thumb {
+        background: var(--border-color);
+        border-radius: 4px;
+    }
+
+    ::-webkit-scrollbar-thumb:hover {
+        background: var(--bs-primary);
+    }
+}

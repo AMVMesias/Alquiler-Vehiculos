@@ -11,7 +11,7 @@ namespace Alquiler.Controllers
         private readonly PagoBL pagoBL = new PagoBL();
         private readonly ReservaBL reservaBL = new ReservaBL();
 
-        public IActionResult Index()
+        public IActionResult Pago()
         {
             return View();
         }
