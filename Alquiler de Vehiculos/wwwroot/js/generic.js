@@ -271,11 +271,11 @@ function Exito() {
 }
 
 function Error() {
-
+    /*
     if (stackTrace.includes('browserLink')) {
         console.log('Ignorando error de BrowserLink');
         return;
-    }
+    }*/
 
     toastr.options = {
         "positionClass": "toast-top-full-width",

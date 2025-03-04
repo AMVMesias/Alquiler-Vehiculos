@@ -17,12 +17,12 @@ namespace Alquiler.Controllers
             return View();
         }
 
-        public IActionResult Vehiculos()
+        public IActionResult VehiculosEmpleado()
         {
             return View();
         }
 
-        public IActionResult Reserva()
+        public IActionResult VehiculosUsuario()
         {
             return View();
         }

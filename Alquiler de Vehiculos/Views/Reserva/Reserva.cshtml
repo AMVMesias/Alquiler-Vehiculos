@@ -34,20 +34,7 @@
                 </button>
             </li>
 
-            <!--ESTA PESTAÑA ES SOLO PARA LOS EMPLEADOS DONDE APRUEBA O NO LOS ALQUILERES-->
-            <li class="nav-item" role="presentation">
-                <button class="nav-link"
-                        id="solicitudes-tab"
-                        data-bs-toggle="tab"
-                        data-bs-target="#solicitudes"
-                        type="button"
-                        role="tab"
-                        aria-controls="solicitudes"
-                        aria-selected="false">
-                    <i class="fas fa-tasks me-2"></i>
-                    Solicitudes Pendientes
-                </button>
-            </li>
+            
         </ul>
     </div>
     <div class="card-body">
@@ -64,21 +51,7 @@
                                 Selección de Vehículo
                             </h4>
                         </div>
-                        <div class="card-body">
-                            <table class="table">
-                                <thead>
-                                    <tr>
-                                        <th scope="col">#</th>
-                                        <th scope="col">Modelo</th>
-                                        <th scope="col">Año</th>
-                                        <th scope="col">Precio/Día</th>
-                                        <th scope="col">Acción</th>
-                                    </tr>
-                                </thead>
-                                <tbody>
-                                    <!-- Aquí va el contenido de la tabla -->
-                                </tbody>
-                            </table>
+                        <div class="divtabla">
                         </div>
                     </div>
 
@@ -151,7 +124,7 @@
                                     <div class="card h-100 insurance-card">
                                         <div class="card-body">
                                             <div class="form-check">
-                                                <input class="form-check-input" type="radio" name="seguroTipo" 
+                                                <input class="form-check-input" type="radio" name="seguroTipo"
                                                        id="responsabilidadCivil" value="responsabilidadCivil">
                                                 <label class="form-check-label w-100" for="responsabilidadCivil">
                                                     <h5 class="mb-3">
@@ -174,7 +147,7 @@
                                     <div class="card h-100 insurance-card">
                                         <div class="card-body">
                                             <div class="form-check">
-                                                <input class="form-check-input" type="radio" name="seguroTipo" 
+                                                <input class="form-check-input" type="radio" name="seguroTipo"
                                                        id="todoRiesgo" value="todoRiesgo">
                                                 <label class="form-check-label w-100" for="todoRiesgo">
                                                     <h5 class="mb-3">
@@ -197,7 +170,7 @@
                                     <div class="card h-100 insurance-card">
                                         <div class="card-body">
                                             <div class="form-check">
-                                                <input class="form-check-input" type="radio" name="seguroTipo" 
+                                                <input class="form-check-input" type="radio" name="seguroTipo"
                                                        id="proteccionRobo" value="proteccionRobo">
                                                 <label class="form-check-label w-100" for="proteccionRobo">
                                                     <h5 class="mb-3">
@@ -220,7 +193,7 @@
                                     <div class="card h-100 insurance-card">
                                         <div class="card-body">
                                             <div class="form-check">
-                                                <input class="form-check-input" type="radio" name="seguroTipo" 
+                                                <input class="form-check-input" type="radio" name="seguroTipo"
                                                        id="asistenciaCarretera" value="asistenciaCarretera">
                                                 <label class="form-check-label w-100" for="asistenciaCarretera">
                                                     <h5 class="mb-3">
@@ -243,7 +216,7 @@
                                     <div class="card h-100 insurance-card">
                                         <div class="card-body">
                                             <div class="form-check">
-                                                <input class="form-check-input" type="radio" name="seguroTipo" 
+                                                <input class="form-check-input" type="radio" name="seguroTipo"
                                                        id="accidentesPersonales" value="accidentesPersonales">
                                                 <label class="form-check-label w-100" for="accidentesPersonales">
                                                     <h5 class="mb-3">
@@ -561,176 +534,8 @@
                 </div>
             </div>
 
-            <!-- Pestaña de Solicitudes Pendientes -->
-            <div class="tab-pane fade" id="solicitudes" role="tabpanel" aria-labelledby="solicitudes-tab">
-                <div class="container">
-                    <div class="card shadow-lg border-0 rounded-lg mb-4">
-                        <div class="card-header bg-gradient text-white" style="background-color: #6c757d;">
-                            <h4 class="mb-0">
-                                <i class="fas fa-clipboard-check me-2"></i>
-                                Gestión de Solicitudes
-                            </h4>
-                        </div>
-                        <div class="card-body">
-                            <!-- Filtros -->
-                            <div class="row mb-4">
-                                <div class="col-md-4">
-                                    <div class="form-floating">
-                                        <select class="form-select" id="filtroEstado">
-                                            <option value="">Todos</option>
-                                            <option value="pendiente">Pendientes</option>
-                                            <option value="aprobada">Aprobadas</option>
-                                            <option value="rechazada">Rechazadas</option>
-                                        </select>
-                                        <label><i class="fas fa-filter me-2"></i>Filtrar por Estado</label>
-                                    </div>
-                                </div>
-                                <div class="col-md-4">
-                                    <div class="form-floating">
-                                        <input type="date" class="form-control" id="filtroFecha">
-                                        <label><i class="fas fa-calendar me-2"></i>Filtrar por Fecha</label>
-                                    </div>
-                                </div>
-                                <div class="col-md-4">
-                                    <div class="form-floating">
-                                        <input type="text" class="form-control" id="filtroCliente" placeholder="Buscar cliente">
-                                        <label><i class="fas fa-search me-2"></i>Buscar Cliente</label>
-                                    </div>
-                                </div>
-                            </div>
-
-                            <!-- Tabla de solicitudes -->
-                            <div class="table-responsive">
-                                <table class="table table-hover">
-                                    <thead class="table-dark">
-                                        <tr>
-                                            <th>ID Solicitud</th>
-                                            <th>Cliente</th>
-                                            <th>Vehículo</th>
-                                            <th>Fecha Inicio</th>
-                                            <th>Fecha Fin</th>
-                                            <th>Método Pago</th>
-                                            <th>Estado</th>
-                                            <th>Acciones</th>
-                                        </tr>
-                                    </thead>
-                                    <tbody>
-                                        <tr>
-                                            <td>SOL-001</td>
-                                            <td>Juan Pérez</td>
-                                            <td>Toyota Corolla 2024</td>
-                                            <td>01/03/2024</td>
-                                            <td>05/03/2024</td>
-                                            <td>Efectivo</td>
-                                            <td><span class="badge bg-warning">Pendiente</span></td>
-                                            <td>
-                                                <button class="btn btn-sm btn-info" title="Ver Detalles" data-bs-toggle="modal" data-bs-target="#detallesSolicitudModal">
-                                                    <i class="fas fa-eye"></i>
-                                                </button>
-                                            </td>
-                                        </tr>
-                                        <!-- Más filas de ejemplo... -->
-                                    </tbody>
-                                </table>
-                            </div>
-
-                            <!-- Modal de Detalles -->
-                            <div class="modal fade" id="detallesSolicitudModal" tabindex="-1">
-                                <div class="modal-dialog modal-lg">
-                                    <div class="modal-content">
-                                        <div class="modal-header">
-                                            <h5 class="modal-title">Detalles de la Solicitud</h5>
-                                            <button type="button" class="btn-close" data-bs-dismiss="modal"></button>
-                                        </div>
-                                        <div class="modal-body">
-                                            <div class="row">
-                                                <div class="col-md-6">
-                                                    <h6>Información del Cliente</h6>
-                                                    <p><strong>Nombre:</strong> Juan Pérez</p>
-                                                    <p><strong>Email:</strong> juan@email.com</p>
-                                                    <p><strong>Teléfono:</strong> 099-999-9999</p>
-                                                </div>
-                                                <div class="col-md-6">
-                                                    <h6>Detalles de la Reserva</h6>
-                                                    <p><strong>Vehículo:</strong> Toyota Corolla 2024</p>
-                                                    <p><strong>Período:</strong> 01/03/2024 - 05/03/2024</p>
-                                                    <p><strong>Total:</strong> $250.00</p>
-                                                </div>
-                                            </div>
-                                        </div>
-                                        <div class="modal-footer">
-                                            <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Cerrar</button>
-                                            <button type="button" class="btn btn-success">Aprobar</button>
-                                            <button type="button" class="btn btn-danger">Rechazar</button>
-                                        </div>
-                                    </div>
-                                </div>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-            </div>
-        </div>
-    </div>
-</div>
-
+            
 @section Scripts {
-    <script>
-        document.addEventListener('DOMContentLoaded', function() {
-            const fechaInicio = document.getElementById('fechaInicio');
-            const fechaFin = document.getElementById('fechaFin');
-
-            fechaInicio.addEventListener('change', function() {
-                const fechaInicioValue = new Date(this.value);
-                const fechaMinFin = new Date(fechaInicioValue);
-                fechaMinFin.setDate(fechaInicioValue.getDate() + 1);
-                fechaFin.min = fechaMinFin.toISOString().split('T')[0];
-
-                if (new Date(fechaFin.value) <= fechaInicioValue) {
-                    fechaFin.value = fechaMinFin.toISOString().split('T')[0];
-                }
-            });
-
-            // Mostrar número de orden aleatorio
-            document.getElementById('ordenNumber').textContent = generateOrderNumber();
-
-            // Gestionar cambios en método de pago
-            const metodoPago = document.getElementsByName('metodoPago');
-            const contenidos = document.getElementsByClassName('payment-content');
-
-            metodoPago.forEach(radio => {
-                radio.addEventListener('change', function() {
-                    Array.from(contenidos).forEach(content => {
-                        content.classList.add('d-none');
-                    });
-
-                    const selectedContent = document.getElementById(this.id + 'Content');
-                    if (selectedContent) {
-                        selectedContent.classList.remove('d-none');
-                    }
-                });
-            });
-        });
-
-        // Generar número de orden aleatorio
-        function generateOrderNumber() {
-            //return 'ORD-' + Math.random().toString(36).substr(2,9).toUpperCase();
-            return 1;
-        }
-
-        // Agregar al final de la sección Scripts
-        document.getElementById('filtroEstado')?.addEventListener('change', function() {
-            // Lógica para filtrar por estado
-        });
-
-        document.getElementById('filtroFecha')?.addEventListener('change', function() {
-            // Lógica para filtrar por fecha
-        });
-
-        document.getElementById('filtroCliente')?.addEventListener('input', function() {
-            // Lógica para buscar por cliente
-        });
-    </script>
     <script>
         // Validación del formulario
         (function () {
@@ -753,3 +558,9 @@
 @section Styles {
     <link rel="stylesheet" href="~/css/reserva.css" />
 }
+<script src="~/js/reserva.js"></script>
+<script src="~/js/generic.js"></script>
+<script src="~/js/vehiculo.js"></script>
+<link href="https://cdnjs.cloudflare.com/ajax/libs/toastr.js/latest/css/toastr.min.css" rel="stylesheet">
+<script src="https://cdnjs.cloudflare.com/ajax/libs/toastr.js/latest/js/toastr.min.js"></script>
+    

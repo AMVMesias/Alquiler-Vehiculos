@@ -17,6 +17,11 @@ namespace Alquiler.Controllers
             return View();
         }
 
+        public IActionResult ReservaEmpleado()
+        {
+            return View();
+        }
+
         // Listar todas las reservas
         public List<ReservaCLS> ListarReservas()
         {
