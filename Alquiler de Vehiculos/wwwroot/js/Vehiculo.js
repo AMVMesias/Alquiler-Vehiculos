@@ -157,3 +157,65 @@ function VerDetalleVehiculo(id) {
         }
     });
 }
+
+function seleccionarVehiculo(id) {
+    // Buscar el vehículo seleccionado en la variable global
+    const vehiculoId = parseInt(id);
+    vehiculoSeleccionado = vehiculosDisponibles.find(v => v.id === vehiculoId);
+    
+    if (!vehiculoSeleccionado) {
+        console.error("Vehículo no encontrado:", id);
+        return;
+    }
+    
+    // Mostrar la información del vehículo
+    const infoVehiculo = document.getElementById('infoVehiculo');
+    if (infoVehiculo) {
+        document.getElementById('marcaModeloVehiculo').textContent = 
+            `${vehiculoSeleccionado.marca} ${vehiculoSeleccionado.modelo}`;
+        document.getElementById('añoVehiculo').textContent = vehiculoSeleccionado.año;
+        document.getElementById('kilometrajeVehiculo').textContent = 
+            vehiculoSeleccionado.kilometraje || '0';
+        document.getElementById('combustibleVehiculo').textContent = 
+            vehiculoSeleccionado.combustible || 'Gasolina';
+        document.getElementById('transmisionVehiculo').textContent = 
+            vehiculoSeleccionado.transmision || 'Manual';
+        document.getElementById('precioVehiculoDia').textContent = 
+            vehiculoSeleccionado.precio.toFixed(2);
+        
+        // Mostrar la imagen si existe
+        if (vehiculoSeleccionado.path) {
+            document.getElementById('imagenVehiculo').src = vehiculoSeleccionado.path;
+        } else {
+            document.getElementById('imagenVehiculo').src = '/img/car-placeholder.png';
+        }
+        
+        // Mostrar el panel de información
+        infoVehiculo.classList.remove('d-none');
+    }
+    
+    // Actualizar el dropdown si es necesario
+    const selectVehiculo = document.getElementById('selectVehiculo');
+    if (selectVehiculo && selectVehiculo.value != vehiculoId) {
+        selectVehiculo.value = vehiculoId;
+    }
+    
+    // Destacar visualmente la fila seleccionada en la tabla
+    const filas = document.querySelectorAll('#divtabla table tbody tr');
+    filas.forEach(fila => {
+        fila.classList.remove('table-active');
+        
+        // Obtener el ID de la fila actual (en la primera celda oculta o en un atributo data)
+        const celdaID = fila.querySelector('td[style*="display: none"]') || 
+                        fila.querySelector('td:first-child');
+        const filaId = celdaID ? celdaID.textContent.trim() : null;
+        
+        if (filaId && parseInt(filaId) === vehiculoId) {
+            fila.classList.add('table-active');
+            fila.scrollIntoView({ behavior: 'smooth', block: 'center' });
+        }
+    });
+    
+    // Actualizar costos
+    actualizarResumenCostos();
+}

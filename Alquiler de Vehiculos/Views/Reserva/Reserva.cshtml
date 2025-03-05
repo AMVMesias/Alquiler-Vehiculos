@@ -33,8 +33,6 @@
                     Mis Reservaciones
                 </button>
             </li>
-
-            
         </ul>
     </div>
     <div class="card-body">
@@ -51,7 +49,56 @@
                                 Selección de Vehículo
                             </h4>
                         </div>
-                        <div class="divtabla">
+                        <div class="card-body">
+                            
+<!-- Campo para selección por ID -->
+<div class="row mb-4">
+    <div class="col-md-9">
+        <div class="form-floating">
+            <input type="number" class="form-control" id="inputVehiculoId" min="1" placeholder="ID del vehículo">
+            <label for="inputVehiculoId"><i class="fas fa-hashtag me-2"></i>Ingrese el número de registro del vehículo</label>
+        </div>
+    </div>
+    <div class="col-md-3">
+        <button type="button" id="btnSeleccionarVehiculo" class="btn btn-warning h-100 w-100">
+            <i class="fas fa-check-circle me-2"></i>Seleccionar
+        </button>
+    </div>
+</div>
+                            
+                            <!-- Mostrar información del vehículo seleccionado -->
+                            <div id="infoVehiculo" class="card p-3 mb-4 d-none">
+                                <div class="row">
+                                    <div class="col-md-4">
+                                        <img id="imagenVehiculo" src="/img/car-placeholder.png" alt="Imagen del vehículo" class="img-fluid rounded">
+                                    </div>
+                                    <div class="col-md-8">
+                                        <h5 id="marcaModeloVehiculo">Marca y Modelo</h5>
+                                        <div class="row">
+                                            <div class="col-md-6">
+                                                <p><strong><i class="fas fa-calendar-alt me-2"></i>Año:</strong> <span id="añoVehiculo">-</span></p>
+                                                <p><strong><i class="fas fa-tachometer-alt me-2"></i>Kilometraje:</strong> <span id="kilometrajeVehiculo">-</span> km</p>
+                                            </div>
+                                            <div class="col-md-6">
+                                                <p><strong><i class="fas fa-gas-pump me-2"></i>Combustible:</strong> <span id="combustibleVehiculo">-</span></p>
+                                                <p><strong><i class="fas fa-cogs me-2"></i>Transmisión:</strong> <span id="transmisionVehiculo">-</span></p>
+                                            </div>
+                                        </div>
+                                        <div class="alert alert-success">
+                                            <strong>Precio por día:</strong> $<span id="precioVehiculoDia">0.00</span>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                            
+                            <!-- Título para la tabla -->
+                            <h5 class="mb-3">
+                                <i class="fas fa-list me-2"></i>
+                                Vehículos disponibles
+                            </h5>
+                            
+                            <!-- Contenedor para la tabla -->
+                            <div id="divtabla" class="table-responsive"></div>
                         </div>
                     </div>
 
@@ -72,9 +119,7 @@
                                                    class="form-control form-control-lg"
                                                    id="fechaInicio"
                                                    name="fechaInicio"
-                                                   required
-                                                   min="@DateTime.Now.ToString("yyyy-MM-dd")"
-                                                   placeholder="Fecha de Inicio">
+                                                   required>
                                             <label for="fechaInicio">
                                                 <i class="fas fa-calendar-alt text-primary me-2"></i>
                                                 Fecha de Inicio
@@ -87,9 +132,7 @@
                                                    class="form-control form-control-lg"
                                                    id="fechaFin"
                                                    name="fechaFin"
-                                                   required
-                                                   min="@DateTime.Now.AddDays(1).ToString("yyyy-MM-dd")"
-                                                   placeholder="Fecha de Devolución">
+                                                   required>
                                             <label for="fechaFin">
                                                 <i class="fas fa-calendar-check text-primary me-2"></i>
                                                 Fecha de Devolución
@@ -245,8 +288,8 @@
                                 <table class="table">
                                     <tbody>
                                         <tr>
-                                            <td>Vehículo (Toyota Corolla 2024)</td>
-                                            <td class="text-end">$<span id="costoVehiculo">50.00</span>/día</td>
+                                            <td>Precio por día del vehículo</td>
+                                            <td class="text-end">$<span id="costoVehiculo">0.00</span>/día</td>
                                         </tr>
                                         <tr>
                                             <td>Días de alquiler</td>
@@ -403,7 +446,7 @@
                                     <div class="col-md-6">
                                         <div class="form-floating mb-3">
                                             <input type="text" class="form-control" id="numeroTarjeta" required
-                                                   pattern="[0-9]{16}" placeholder="Número de tarjeta">
+                                                   placeholder="Número de tarjeta">
                                             <label for="numeroTarjeta">
                                                 <i class="fas fa-credit-card me-2"></i>
                                                 Número de tarjeta
@@ -417,7 +460,7 @@
                                     <div class="col-md-4">
                                         <div class="form-floating mb-3">
                                             <input type="text" class="form-control" id="fechaExpiracion" required
-                                                   pattern="(0[1-9]|1[0-2])\/([0-9]{2})" placeholder="MM/YY">
+                                                   placeholder="MM/YY">
                                             <label for="fechaExpiracion">
                                                 <i class="fas fa-calendar-alt me-2"></i>
                                                 Fecha de expiración (MM/YY)
@@ -431,7 +474,7 @@
                                     <div class="col-md-4">
                                         <div class="form-floating mb-3">
                                             <input type="text" class="form-control" id="cvv" required
-                                                   pattern="[0-9]{3,4}" placeholder="CVV">
+                                                   placeholder="CVV">
                                             <label for="cvv">
                                                 <i class="fas fa-lock me-2"></i>
                                                 CVV
@@ -471,13 +514,6 @@
                                             </div>
                                         </div>
                                     </div>
-
-                                    <div class="col-12">
-                                        <button class="btn btn-primary btn-lg w-100" type="submit">
-                                            <i class="fas fa-lock me-2"></i>
-                                            Confirmar Pago
-                                        </button>
-                                    </div>
                                 </form>
                             </div>
                         </div>
@@ -509,32 +545,17 @@
                                     <th>Acciones</th>
                                 </tr>
                             </thead>
-                            <tbody>
-                                <!-- Aquí irán las reservas del usuario -->
-                                <tr>
-                                    <td>RES-001</td>
-                                    <td>Toyota Corolla 2024</td>
-                                    <td>01/03/2024</td>
-                                    <td>05/03/2024</td>
-                                    <td><span class="badge bg-success">Confirmada</span></td>
-                                    <td>$250.00</td>
-                                    <td>
-                                        <!--Aqui si es que sigue pendiente se puede eliminar o editar pero si ya es confirmada no-->
-                                        <button class="btn btn-sm btn-warning" title="Editar">
-                                            <i class="fas fa-edit"></i>
-                                        </button>
-                                        <button class="btn btn-sm btn-danger" title="Eliminar">
-                                            <i class="fas fa-trash"></i>
-                                        </button>
-                                    </td>
-                                </tr>
+                            <tbody id="tbodyMisReservas">
+                                <!-- Aquí se cargarán dinámicamente las reservas del usuario -->
                             </tbody>
                         </table>
                     </div>
                 </div>
             </div>
+        </div>
+    </div>
+</div>
 
-            
 @section Scripts {
     <script>
         // Validación del formulario
@@ -552,6 +573,78 @@
                     }, false)
                 })
         })()
+        
+        // Función para cargar reservas del usuario
+        function cargarMisReservas() {
+            const usuarioId = localStorage.getItem('usuarioId');
+            if (!usuarioId) {
+                // Si no hay usuario logueado, mostrar mensaje
+                document.getElementById('tbodyMisReservas').innerHTML = 
+                    '<tr><td colspan="7" class="text-center">Debe iniciar sesión para ver sus reservas</td></tr>';
+                return;
+            }
+            
+            fetchGet(`Reserva/ReservasPorCliente?clienteId=${usuarioId}`, "json", function(data) {
+                if (!data || !Array.isArray(data)) {
+                    document.getElementById('tbodyMisReservas').innerHTML = 
+                        '<tr><td colspan="7" class="text-center">No se pudieron cargar las reservas</td></tr>';
+                    return;
+                }
+                
+                if (data.length === 0) {
+                    document.getElementById('tbodyMisReservas').innerHTML = 
+                        '<tr><td colspan="7" class="text-center">No tiene reservas activas</td></tr>';
+                    return;
+                }
+                
+                let html = '';
+                data.forEach(reserva => {
+                    const fechaInicio = new Date(reserva.fechaInicio).toLocaleDateString();
+                    const fechaFin = new Date(reserva.fechaFin).toLocaleDateString();
+                    
+                    let estadoClass = "";
+                    switch (reserva.estado.toLowerCase()) {
+                        case 'pendiente':
+                            estadoClass = "bg-warning";
+                            break;
+                        case 'confirmada':
+                            estadoClass = "bg-success";
+                            break;
+                        case 'cancelada':
+                            estadoClass = "bg-danger";
+                            break;
+                        default:
+                            estadoClass = "bg-secondary";
+                    }
+                    
+                    html += `
+                        <tr>
+                            <td>${reserva.numeroReserva}</td>
+                            <td>${reserva.vehiculo}</td>
+                            <td>${fechaInicio}</td>
+                            <td>${fechaFin}</td>
+                            <td><span class="badge ${estadoClass}">${reserva.estado}</span></td>
+                            <td>$${reserva.total}</td>
+                            <td>
+                                ${reserva.estado.toLowerCase() === 'pendiente' ? `
+                                    <button class="btn btn-sm btn-warning" title="Editar">
+                                        <i class="fas fa-edit"></i>
+                                    </button>
+                                    <button class="btn btn-sm btn-danger" title="Eliminar">
+                                        <i class="fas fa-trash"></i>
+                                    </button>
+                                ` : ''}
+                            </td>
+                        </tr>
+                    `;
+                });
+                
+                document.getElementById('tbodyMisReservas').innerHTML = html;
+            });
+        }
+        
+        // Llamar a la función para cargar las reservas al cargar la página
+        document.addEventListener('DOMContentLoaded', cargarMisReservas);
     </script>
 }
 
@@ -563,4 +656,3 @@
 <script src="~/js/vehiculo.js"></script>
 <link href="https://cdnjs.cloudflare.com/ajax/libs/toastr.js/latest/css/toastr.min.css" rel="stylesheet">
 <script src="https://cdnjs.cloudflare.com/ajax/libs/toastr.js/latest/js/toastr.min.js"></script>
-    
